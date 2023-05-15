@@ -27,7 +27,7 @@ defineProps({
 
 <template>
   <!-- TODO: Highlight completed -->
-  <div :class="['card', 'h-100', { 'opacity-50': boss.completed }]" @click="toggleCompleted(boss.id)">
+  <div :class="['card', 'h-100', { 'highlight': boss.completed }]" @click="toggleCompleted(boss.id)">
     <img v-if="boss.image != null" :src="boss.image" :class="['card-img-top', { 'img-sm': !showDetails && !showName, 'card-img-bottom': !showDetails }]" />
     <div v-else :class="['card-img-top', { 'img-sm': !showDetails && !showName }]"></div>
     <div class="card-img-overlay d-flex flex-column justify-content-end" v-if="!showDetails && showName">
@@ -102,5 +102,9 @@ defineProps({
 
 .shardbearer {
   transform: rotate(90deg);
+}
+
+.highlight {
+  filter: brightness(130%);
 }
 </style>
