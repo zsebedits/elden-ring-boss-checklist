@@ -57,11 +57,12 @@ const setSort = (column) => {
 <style scoped>
 .boss-grid {
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 
 .grid-lg {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .grid-sm {

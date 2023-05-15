@@ -26,8 +26,9 @@ defineProps({
 </script>
 
 <template>
-  <div :class="['card', 'h-100', { 'opacity-50': !boss.completed }]" @click="toggleCompleted(boss.id)">
-    <img v-if="boss.image != null" :src="boss.image" :class="['card-img-top', { 'img-sm': !showDetails && !showName }]" />
+  <!-- TODO: Highlight completed -->
+  <div :class="['card', 'h-100', { 'opacity-50': boss.completed }]" @click="toggleCompleted(boss.id)">
+    <img v-if="boss.image != null" :src="boss.image" :class="['card-img-top', { 'img-sm': !showDetails && !showName, 'card-img-bottom': !showDetails }]" />
     <div v-else :class="['card-img-top', { 'img-sm': !showDetails && !showName }]"></div>
     <div class="card-img-overlay d-flex flex-column justify-content-end" v-if="!showDetails && showName">
       <h6 class="card-title">
@@ -39,23 +40,23 @@ defineProps({
         {{ boss.description }}
       </h5>
       <div class="row mb-2">
-        <div class="col-4">{{ t('location') }}</div>
-        <div class="col-8">{{ boss.location.name }}</div>
-        <div class="col-4">{{ t('health') }}</div>
-        <div class="col-8">{{ boss.health }}</div>
-        <div class="col-4">{{ t('stance') }}</div>
-        <div class="col-8">{{ boss.stance }}</div>
-        <div class="col-4">{{ t('runes') }}</div>
-        <div class="col-8">{{ boss.runes }}</div>
-        <div class="col-4">{{ t('type') }}</div>
-        <div class="col-8">
+        <div class="col-6">{{ t('location') }}</div>
+        <div class="col-6">{{ boss.location.name }}</div>
+        <div class="col-6">{{ t('health') }}</div>
+        <div class="col-6">{{ boss.health }}</div>
+        <div class="col-6">{{ t('stance') }}</div>
+        <div class="col-6">{{ boss.stance }}</div>
+        <div class="col-6">{{ t('runes') }}</div>
+        <div class="col-6">{{ boss.runes }}</div>
+        <div class="col-6">{{ t('type') }}</div>
+        <div class="col-6">
           <div class="d-flex">
             <div v-if="boss.shardbearer" class="shardbearer"><i class="bi bi-dash-circle" :title="t('shardbearer')"></i></div>
             <div v-if="boss.remembrance"><i class="bi bi-fire" :title="t('remembranceBoss')"></i></div>
           </div>
         </div>
-        <div class="col-4">{{ t('completed') }}</div>
-        <div class="col-8">
+        <div class="col-6">{{ t('completed') }}</div>
+        <div class="col-6">
           <span v-if="boss.completed"><i class="bi bi-check-lg" :title="t('completed')"></i></span>
           <span v-else><i class="bi bi-x-lg" :title="t('undefeated')"></i></span>
         </div>
@@ -84,6 +85,10 @@ defineProps({
 
 .card h6.card-title {
   margin-bottom: 0cm;
+}
+
+.card h5.card-title {
+  min-height: 3rem;
 }
 
 .card:hover {

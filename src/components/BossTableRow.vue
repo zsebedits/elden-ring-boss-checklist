@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <!-- TODO: Change if selected? -->
+  <!-- TODO: Highlight completed -->
   <tr :class="[{ 'table-activee': boss.completed, 'opacity-75s': !boss.completed }]">
     <th><input class="form-check-input" type="checkbox" :id="boss.id" :checked="boss.completed" @change="toggleCompleted(boss.id)" /></th>
     <th><img v-if="boss.image != null" :src="boss.image" class="boss-image" /></th>
