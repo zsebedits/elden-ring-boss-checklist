@@ -42,7 +42,7 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Test
-        run: npm run test
+        run: npm run test:unit
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
