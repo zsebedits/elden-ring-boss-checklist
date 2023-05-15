@@ -1,10 +1,10 @@
 # Elden Ring Boss Checklist
 
-This is an example project using Vue 3 + Vite + Pinia. A demo can be found here: https://zsebedits.github.io/elden-ring-boss-checklist/.
+This was created as an example project using Vue 3 + Vite + Pinia. A demo can be found here: https://zsebedits.github.io/elden-ring-boss-checklist/.
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Customize configuration
 

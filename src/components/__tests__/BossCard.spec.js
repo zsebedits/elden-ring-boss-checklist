@@ -1,34 +1,25 @@
-import { describe, it, expect, vi } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { useI18n } from 'vue-i18n'
+import { describe, it, expect } from 'vitest'
+import { shallowMount } from '@vue/test-utils'
 import BossCard from '../BossCard.vue'
+import boss from './fixtures/boss'
 
-vi.mock('vue-i18n')
-
-useI18n.mockReturnValue({
-  t: (tKey) => tKey
-})
-
-const boss = {
-  id: '292b242a-6580-403f-a265-024e80f4636d',
-  description: 'Starscourge Radahn',
-  url: 'https://eldenring.wiki.fextralife.com/Starscourge+Radahn',
-  image: 'https://eldenring.fanapis.com/images/bosses/17f69dc74fdl0i1v1wz3qrzn19aps8.png',
-  health: 9572,
-  stance: 200,
-  runes: 70000,
-  drops: ['Remembrance of the Starscourge', "Radahn's Great Rune"],
-  remembrance: true,
-  shardbearer: true,
-  location: {
-    id: '292b242a-6580-403f-a265-024e8024636d',
-    name: 'Caelid'
-  }
-}
-
-describe('BossCard', () => {
+describe('BossCard.vue Implementation Test', () => {
   it('renders properly', () => {
-    const wrapper = mount(BossCard, { props: { boss } })
+    const wrapper = shallowMount(BossCard, { props: { boss } })
     expect(wrapper.text()).toContain(boss.description)
+    expect(wrapper.text()).toContain(boss.location.name)
+    expect(wrapper.findAll('img').length).toEqual(1)
+    expect(wrapper.findAll('img').at(0).attributes('src')).toMatch(boss.image)
+  })
+
+  it('does not show details if property "showDetails" is false', () => {
+    const wrapper = shallowMount(BossCard, { props: { boss, showDetails: false } })
+    expect(wrapper.text()).not.toContain(boss.location.name)
+  })
+
+  it('does not show the name if property "showName" is false', () => {
+    const wrapper = shallowMount(BossCard, { props: { boss, showName: false } })
+    expect(wrapper.text()).not.toContain(boss.description)
+    expect(wrapper.text()).toContain(boss.location.name)
   })
 })

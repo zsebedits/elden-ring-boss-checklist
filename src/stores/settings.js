@@ -19,5 +19,6 @@ export const useSettingsStore = defineStore('settings', () => {
       settings.value.bossViewMode = 'table'
     }
   }
+
   return { settings, toggleBossViewMode }
 })

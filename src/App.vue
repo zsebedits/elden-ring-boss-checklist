@@ -5,13 +5,7 @@ import NavBar from './components/NavBar.vue'
 
 <template>
   <NavBar />
-  <main class="container">
+  <main class="container pb-4">
     <RouterView />
   </main>
 </template>
-
-<style scoped>
-main {
-  padding-bottom: 2rem;
-}
-</style>
