@@ -1,6 +1,6 @@
 # Elden Ring Boss Checklist
 
-This template should help get you started developing with Vue 3 in Vite.
+This is an example project using Vue 3 + Vite + Pinia. A demo can be found here: https://zsebedits.github.io/elden-ring-boss-checklist/.
 
 ## Recommended IDE Setup
 

@@ -3,7 +3,7 @@ export default {
   search: 'Suchen',
   about: 'Über',
   allLocations: 'Alle Regionen',
-  uncompleted: 'Unvollständig',
+  undefeated: 'Unbesiegt',
   name: 'Name',
   location: 'Region',
   health: 'HP',

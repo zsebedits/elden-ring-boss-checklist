@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useColorModeStore } from '../stores/color-mode'
 import logo from '../assets/elden-ring-logo.png'
 import LocaleSwitcher from './LocaleSwitcher.vue'
+import EnterLeaveTransition from './EnterLeaveTransition.vue'
 
 const { t } = useI18n()
 
@@ -39,10 +40,12 @@ const { toggleDark } = colorModeStore
         <ul class="navbar-nav mb-2 mb-lg-0">
           <LocaleSwitcher />
           <li class="nav-item">
-            <button class="nav-link" @click="toggleDark()">
-              <i v-if="isDark" class="bi bi-moon-stars-fill"></i>
-              <i v-else class="bi bi-sun"></i>
-            </button>
+            <EnterLeaveTransition>
+              <button v-if="isDark" class="nav-link" @click="toggleDark()">
+                <i class="bi bi-moon-stars-fill"></i>
+              </button>
+              <button v-else class="nav-link" @click="toggleDark()"><i class="bi bi-sun"></i></button>
+            </EnterLeaveTransition>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/zsebedits/elden-ring-boss-checklist" target="_blank"><i class="bi bi-github"></i></a>

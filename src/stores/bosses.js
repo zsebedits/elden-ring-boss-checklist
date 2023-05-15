@@ -10,7 +10,7 @@ export const useBossesStore = defineStore('bosses', () => {
     remembrance: undefined,
     shardbearer: undefined,
     name: undefined,
-    uncompleted: undefined,
+    undefeated: undefined,
     sort: undefined,
     sortDesc: false,
     location: undefined
@@ -37,7 +37,7 @@ export const useBossesStore = defineStore('bosses', () => {
     const filteredBosses = bosses.value.filter(
       (boss) =>
         (!filters.value.remembrance || boss.remembrance) &&
-        (!filters.value.uncompleted || !boss.completed) &&
+        (!filters.value.undefeated || !boss.completed) &&
         (filters.value.name == null ||
           boss.description.toLocaleLowerCase().includes(filters.value.name.toLocaleLowerCase()) ||
           boss.location.name.toLocaleLowerCase().includes(filters.value.name.toLocaleLowerCase()) ||

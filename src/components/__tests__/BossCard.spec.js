@@ -19,7 +19,11 @@ const boss = {
   runes: 70000,
   drops: ['Remembrance of the Starscourge', "Radahn's Great Rune"],
   remembrance: true,
-  shardbearer: true
+  shardbearer: true,
+  location: {
+    id: '292b242a-6580-403f-a265-024e8024636d',
+    name: 'Caelid'
+  }
 }
 
 describe('BossCard', () => {

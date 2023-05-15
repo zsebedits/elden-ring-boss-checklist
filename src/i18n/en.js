@@ -3,7 +3,7 @@ export default {
   search: 'Search',
   about: 'About',
   allLocations: 'All Locations',
-  uncompleted: 'Uncompleted',
+  undefeated: 'Undefeated',
   name: 'Name',
   location: 'Location',
   health: 'HP',

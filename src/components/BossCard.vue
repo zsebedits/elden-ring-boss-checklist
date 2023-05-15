@@ -57,7 +57,7 @@ defineProps({
         <div class="col-4">{{ t('completed') }}</div>
         <div class="col-8">
           <span v-if="boss.completed"><i class="bi bi-check-lg" :title="t('completed')"></i></span>
-          <span v-else><i class="bi bi-x-lg" :title="t('uncompleted')"></i></span>
+          <span v-else><i class="bi bi-x-lg" :title="t('undefeated')"></i></span>
         </div>
       </div>
       {{ t('drops') }}
