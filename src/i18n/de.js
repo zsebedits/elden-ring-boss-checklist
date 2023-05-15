@@ -11,7 +11,7 @@ export default {
   runes: 'Runen',
   type: 'Typ',
   drops: 'Belohnungen',
-  completed: 'Abgeschlossen',
+  completed: 'Besiegt',
   remembrance: 'Echo',
   remembranceBoss: 'Echo-Boss',
   bossChecklist: 'Boss-Checkliste'

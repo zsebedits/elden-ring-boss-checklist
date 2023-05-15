@@ -4,6 +4,9 @@ import BossCard from './BossCard.vue'
 import { useBossesStore } from '../stores/bosses'
 import { useSettingsStore } from '../stores/settings'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const bossesStore = useBossesStore()
 const { filteredBosses, filters } = storeToRefs(bossesStore)
@@ -27,13 +30,12 @@ const setSort = (column) => {
         <tr>
           <th scope="col"></th>
           <th scope="col"></th>
-          <th scope="col" @click="setSort('description')">{{ $t('name') }}</th>
-          <th scope="col" @click="setSort('location')">{{ $t('location') }}</th>
-          <th scope="col" @click="setSort('health')" style="text-align: end">{{ $t('health') }}</th>
-          <th scope="col" @click="setSort('stance')" style="text-align: end">{{ $t('stance') }}</th>
-          <th scope="col" @click="setSort('runes')" style="text-align: end">{{ $t('runes') }}</th>
-          <!-- <th scope="col">{{ $t('drops') }}</th> -->
-          <th scope="col" style="text-align: end">{{ $t('type') }}</th>
+          <th scope="col" @click="setSort('description')">{{ t('name') }}</th>
+          <th scope="col" @click="setSort('location')">{{ t('location') }}</th>
+          <th scope="col" @click="setSort('health')" style="text-align: end">{{ t('health') }}</th>
+          <th scope="col" @click="setSort('stance')" style="text-align: end">{{ t('stance') }}</th>
+          <th scope="col" @click="setSort('runes')" style="text-align: end">{{ t('runes') }}</th>
+          <th scope="col" style="text-align: end">{{ t('type') }}</th>
         </tr>
       </thead>
       <tbody>

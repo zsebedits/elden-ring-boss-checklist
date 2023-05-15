@@ -1,5 +1,8 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { useBossesStore } from '../stores/bosses'
+
+const { t } = useI18n()
 
 const store = useBossesStore()
 const { toggleCompleted } = store
@@ -36,28 +39,28 @@ defineProps({
         {{ boss.description }}
       </h5>
       <div class="row mb-2">
-        <div class="col-4">{{ $t('location') }}</div>
+        <div class="col-4">{{ t('location') }}</div>
         <div class="col-8">{{ boss.location.name }}</div>
-        <div class="col-4">{{ $t('health') }}</div>
+        <div class="col-4">{{ t('health') }}</div>
         <div class="col-8">{{ boss.health }}</div>
-        <div class="col-4">{{ $t('stance') }}</div>
+        <div class="col-4">{{ t('stance') }}</div>
         <div class="col-8">{{ boss.stance }}</div>
-        <div class="col-4">{{ $t('runes') }}</div>
+        <div class="col-4">{{ t('runes') }}</div>
         <div class="col-8">{{ boss.runes }}</div>
-        <div class="col-4">{{ $t('type') }}</div>
+        <div class="col-4">{{ t('type') }}</div>
         <div class="col-8">
           <div class="d-flex">
-            <div v-if="boss.shardbearer" style="transform: rotate(90deg)"><i class="bi bi-dash-circle" :title="$t('shardbearer')"></i></div>
-            <div v-if="boss.remembrance"><i class="bi bi-fire" :title="$t('remembranceBoss')"></i></div>
+            <div v-if="boss.shardbearer" class="shardbearer"><i class="bi bi-dash-circle" :title="t('shardbearer')"></i></div>
+            <div v-if="boss.remembrance"><i class="bi bi-fire" :title="t('remembranceBoss')"></i></div>
           </div>
         </div>
-        <div class="col-4">{{ $t('completed') }}</div>
+        <div class="col-4">{{ t('completed') }}</div>
         <div class="col-8">
-          <span v-if="boss.completed"><i class="bi bi-check-lg" :title="$t('completed')"></i></span>
-          <span v-else><i class="bi bi-x-lg" :title="$t('uncompleted')"></i></span>
+          <span v-if="boss.completed"><i class="bi bi-check-lg" :title="t('completed')"></i></span>
+          <span v-else><i class="bi bi-x-lg" :title="t('uncompleted')"></i></span>
         </div>
       </div>
-      {{ $t('drops') }}
+      {{ t('drops') }}
       <br />
       {{ boss.drops != null ? boss.drops.join(', ') : '' }}
     </div>
@@ -90,5 +93,9 @@ defineProps({
 
 .col-4 {
   padding-right: 0;
+}
+
+.shardbearer {
+  transform: rotate(90deg);
 }
 </style>
