@@ -27,9 +27,16 @@ defineProps({
 
 <template>
   <!-- TODO: Highlight completed -->
-  <div :class="['card', 'h-100', { 'highlight': boss.completed }]" @click="toggleCompleted(boss.id)">
-    <img v-if="boss.image != null" :src="boss.image" :class="['card-img-top', { 'img-sm': !showDetails && !showName, 'card-img-bottom': !showDetails }]" />
-    <div v-else :class="['card-img-top', { 'img-sm': !showDetails && !showName }]"></div>
+  <div :class="['card', 'h-100', { highlight: boss.completed }]" @click="toggleCompleted(boss.id)">
+    <img
+      v-if="boss.image != null"
+      :src="boss.image"
+      :class="[
+        'card-img-top',
+        { 'img-sm': !showDetails && !showName, 'card-img-bottom': !showDetails, grayscale: !boss.completed, 'transform-origin-bottom': showDetails }
+      ]"
+    />
+    <div v-else :class="['card-img-top', { 'img-sm': !showDetails && !showName, 'card-img-bottom': !showDetails, grayscale: !boss.completed }]"></div>
     <div class="card-img-overlay d-flex flex-column justify-content-end" v-if="!showDetails && showName">
       <h6 class="card-title">
         {{ boss.description }}
@@ -39,31 +46,40 @@ defineProps({
       <h5 class="card-title" v-if="showName">
         {{ boss.description }}
       </h5>
-      <div class="row mb-2">
-        <div class="col-6">{{ t('location') }}</div>
-        <div class="col-6">{{ boss.location.name }}</div>
-        <div class="col-6">{{ t('health') }}</div>
-        <div class="col-6">{{ boss.health }}</div>
-        <div class="col-6">{{ t('stance') }}</div>
-        <div class="col-6">{{ boss.stance }}</div>
-        <div class="col-6">{{ t('runes') }}</div>
-        <div class="col-6">{{ boss.runes }}</div>
-        <div class="col-6">{{ t('type') }}</div>
-        <div class="col-6">
+      <!-- <h6 class="card-subtitle mb-2 text-body-secondary">{{ boss.location.name }}</h6> -->
+      <div class="row justify-content-between">
+        <div class="col-auto">{{ boss.location.name }}</div>
+        <div class="col-auto">
           <div class="d-flex">
             <div v-if="boss.shardbearer" class="shardbearer"><i class="bi bi-dash-circle" :title="t('shardbearer')"></i></div>
             <div v-if="boss.remembrance"><i class="bi bi-fire" :title="t('remembranceBoss')"></i></div>
           </div>
         </div>
-        <div class="col-6">{{ t('completed') }}</div>
-        <div class="col-6">
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-auto">{{ t('health') }}</div>
+        <div class="col-auto">{{ boss.health }}</div>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-auto">{{ t('stance') }}</div>
+        <div class="col-auto">{{ boss.stance }}</div>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-auto">{{ t('runes') }}</div>
+        <div class="col-auto">{{ boss.runes }}</div>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-auto">{{ t('completed') }}</div>
+        <div class="col-auto">
           <span v-if="boss.completed"><i class="bi bi-check-lg" :title="t('completed')"></i></span>
           <span v-else><i class="bi bi-x-lg" :title="t('undefeated')"></i></span>
         </div>
       </div>
-      {{ t('drops') }}
-      <br />
-      {{ boss.drops != null ? boss.drops.join(', ') : '' }}
+      <div class="mt-3">
+        {{ t('drops') }}
+        <br />
+        {{ boss.drops != null ? boss.drops.join(', ') : '' }}
+      </div>
     </div>
   </div>
 </template>
@@ -71,7 +87,7 @@ defineProps({
 <style scoped>
 .card {
   cursor: pointer;
-  transition: transform 100ms;
+  overflow: hidden;
 }
 .card .card-img-top {
   height: 12rem;
@@ -91,9 +107,12 @@ defineProps({
   min-height: 3rem;
 }
 
-.card:hover {
-  opacity: 100;
-  transform: scale(1.02);
+.card img {
+  transition: transform 0.15s ease;
+}
+
+.card:hover img {
+  transform: scale(1.12);
 }
 
 .col-4 {
@@ -106,5 +125,13 @@ defineProps({
 
 .highlight {
   filter: brightness(130%);
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.transform-origin-bottom {
+  transform-origin: bottom;
 }
 </style>

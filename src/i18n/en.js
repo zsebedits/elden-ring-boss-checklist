@@ -11,7 +11,7 @@ export default {
   runes: 'Runes',
   type: 'Type',
   drops: 'Drops',
-  completed: 'Completed',
+  completed: 'Defeated',
   remembrance: 'Remembrance',
   remembranceBoss: 'Remembrance Boss',
   bossChecklist: 'Boss Checklist'
