@@ -101,6 +101,8 @@ defineProps({
 
 .card h6.card-title {
   margin-bottom: 0cm;
+  color: white;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.176), 0 0 1px rgba(0, 0, 0, 0.176), 0 0 1px rgba(0, 0, 0, 0.176), 0 0 1px rgba(0, 0, 0, 0.176);
 }
 
 .card h5.card-title {

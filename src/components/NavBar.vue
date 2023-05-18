@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useColorModeStore } from '../stores/color-mode'
+import { useSettingsStore } from '../stores/settings'
 import logo from '../assets/elden-ring-logo.png'
 import LocaleSwitcher from './LocaleSwitcher.vue'
 import EnterLeaveTransition from './EnterLeaveTransition.vue'
@@ -11,11 +12,15 @@ const { t } = useI18n()
 const colorModeStore = useColorModeStore()
 const { isDark } = storeToRefs(colorModeStore)
 const { toggleDark } = colorModeStore
+
+const settingsStore = useSettingsStore()
+const { settings } = storeToRefs(settingsStore)
+const { toggleLayoutFluid } = settingsStore
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
+    <div :class="[{ 'container-fluid': settings.layoutFluid, container: !settings.layoutFluid }]">
       <RouterLink to="/" class="navbar-brand"><img :src="logo" alt="Logo" class="logo" /></RouterLink>
       <button
         class="navbar-toggler"
@@ -39,6 +44,14 @@ const { toggleDark } = colorModeStore
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           <LocaleSwitcher />
+          <li class="nav-item">
+            <EnterLeaveTransition name="rotate">
+              <button v-if="settings.layoutFluid" class="nav-link" @click="toggleLayoutFluid()">
+                <i class="bi bi-arrows-angle-contract"></i>
+              </button>
+              <button v-else class="nav-link" @click="toggleLayoutFluid()"><i class="bi bi-arrows-angle-expand"></i></button>
+            </EnterLeaveTransition>
+          </li>
           <li class="nav-item">
             <EnterLeaveTransition>
               <button v-if="isDark" class="nav-link" @click="toggleDark()">

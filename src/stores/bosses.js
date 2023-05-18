@@ -18,9 +18,9 @@ export const useBossesStore = defineStore('bosses', () => {
 
   const completionObject = useStorage(
     'completionObject',
-    baseData.bosses.reduce((prev, c) => {
-      prev[c.id] = false
-      return prev
+    baseData.bosses.reduce((acc, c) => {
+      acc[c.id] = false
+      return acc
     }, {}),
     localStorage,
     { mergeDefaults: true }
@@ -32,6 +32,8 @@ export const useBossesStore = defineStore('bosses', () => {
       return { ...boss }
     })
   )
+
+  const completedBosses = computed(() => bosses.value.filter((boss) => boss.completed))
 
   const filteredBosses = computed(() => {
     const filteredBosses = bosses.value.filter(
@@ -64,7 +66,7 @@ export const useBossesStore = defineStore('bosses', () => {
     return filteredBosses
   })
 
-  const completedBosses = computed(() => filteredBosses.value.filter((boss) => boss.completed))
+  const completedFilteredBosses = computed(() => filteredBosses.value.filter((boss) => boss.completed))
 
   const locations = ref(baseData.locations)
 
@@ -72,5 +74,13 @@ export const useBossesStore = defineStore('bosses', () => {
     completionObject.value[bossId] = !completionObject.value[bossId]
   }
 
-  return { bosses, filteredBosses, completedBosses, locations, filters, toggleCompleted }
+  const setSort = (value) => {
+    if (filters.value.sort === value) {
+      filters.value.sortDesc = !filters.value.sortDesc
+    } else {
+      filters.value.sort = value
+    }
+  }
+
+  return { bosses, completedBosses, filteredBosses, completedFilteredBosses, locations, filters, toggleCompleted, setSort }
 })

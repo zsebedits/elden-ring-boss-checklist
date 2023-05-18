@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 
 const baseSettings = {
-  bossViewMode: 'table'
+  bossViewMode: 'table',
+  layoutFluid: false
 }
 
 export const useSettingsStore = defineStore('settings', () => {
@@ -20,5 +21,9 @@ export const useSettingsStore = defineStore('settings', () => {
     }
   }
 
-  return { settings, toggleBossViewMode }
+  const toggleLayoutFluid = () => {
+    settings.value.layoutFluid = !settings.value.layoutFluid
+  }
+
+  return { settings, toggleBossViewMode, toggleLayoutFluid }
 })

@@ -9,18 +9,11 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const bossesStore = useBossesStore()
-const { filteredBosses, filters } = storeToRefs(bossesStore)
+const { filteredBosses } = storeToRefs(bossesStore)
+const { setSort } = bossesStore;
 
 const settingsStore = useSettingsStore()
 const { settings } = storeToRefs(settingsStore)
-
-const setSort = (column) => {
-  if (filters.value.sort === column) {
-    filters.value.sortDesc = !filters.value.sortDesc
-  } else {
-    filters.value.sort = column
-  }
-}
 </script>
 
 <template>

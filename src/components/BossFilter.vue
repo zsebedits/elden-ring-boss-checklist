@@ -8,7 +8,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const bossesStore = useBossesStore()
-const { filters, filteredBosses, completedBosses, locations } = storeToRefs(bossesStore)
+const { filters, bosses, completedBosses, filteredBosses, completedFilteredBosses, locations } = storeToRefs(bossesStore)
 
 const settingsStore = useSettingsStore()
 const { settings } = storeToRefs(settingsStore)
@@ -23,12 +23,14 @@ const { toggleBossViewMode } = settingsStore
       </div>
       <div class="col-xl-3 col-lg-6 col-md-6 mb-1 mt-1">
         <select class="form-select" v-model="filters.location">
-          <option :value="undefined" selected>{{ t('allLocations') }}</option>
-          <option v-for="location in locations" :key="location.id" :value="location.id">{{ location.name }}</option>
+          <option :value="undefined" selected>{{ t('allLocations') }} ({{ completedBosses.length }}/{{ bosses.length }})</option>
+          <option v-for="location in locations" :key="location.id" :value="location.id">
+            {{ location.name }} ({{ location.requirements.filter((boss) => boss.completed).length }}/{{ location.requirements.length }})
+          </option>
         </select>
       </div>
       <div class="col-sm col-xs-auto"></div>
-      <div class="col-auto mb-2 mt-2">{{ completedBosses.length }} / {{ filteredBosses.length }}</div>
+      <div class="col-auto mb-2 mt-2">{{ completedFilteredBosses.length }} / {{ filteredBosses.length }}</div>
       <div class="col-auto mb-2 mt-2">
         <EnterLeaveTransition name="rotate">
           <button class="nav-link" @click="toggleBossViewMode" v-if="settings.bossViewMode === 'table'"><i class="bi bi-table"></i></button>

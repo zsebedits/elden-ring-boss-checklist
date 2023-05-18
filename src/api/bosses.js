@@ -17,7 +17,6 @@ export const getBaseData = () => {
       }
     }
     data.bosses.push(...bossData[i].requirements)
-    delete location.requirements
     data.locations.push(location)
   }
   return data
