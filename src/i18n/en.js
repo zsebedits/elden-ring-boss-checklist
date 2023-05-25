@@ -14,5 +14,7 @@ export default {
   completed: 'Defeated',
   remembrance: 'Remembrance',
   remembranceBoss: 'Remembrance Boss',
-  bossChecklist: 'Boss Checklist'
+  bossChecklist: 'Boss Checklist',
+  region: 'Region',
+  allRegions: 'All Regions'
 }

@@ -126,7 +126,7 @@ defineProps({
 }
 
 .highlight {
-  filter: brightness(130%);
+  filter: brightness(110%);
 }
 
 .grayscale {

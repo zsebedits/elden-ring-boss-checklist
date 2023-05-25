@@ -2,10 +2,10 @@ export default {
   shardbearer: 'Fragmentträger',
   search: 'Suchen',
   about: 'Über',
-  allLocations: 'Alle Regionen',
+  allLocations: 'Alle Orte',
   undefeated: 'Unbesiegt',
   name: 'Name',
-  location: 'Region',
+  location: 'Ort',
   health: 'HP',
   stance: 'Stance',
   runes: 'Runen',
@@ -14,5 +14,7 @@ export default {
   completed: 'Besiegt',
   remembrance: 'Echo',
   remembranceBoss: 'Echo-Boss',
-  bossChecklist: 'Boss-Checkliste'
+  bossChecklist: 'Boss-Checkliste',
+  region: 'Region',
+  allRegions: 'Alle Regionen'
 }

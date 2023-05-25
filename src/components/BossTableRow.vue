@@ -39,8 +39,10 @@ defineProps({
 <style scoped>
 th .boss-image {
   height: 1.4rem;
-  width: 2rem;
+  width: 1.4rem;
   object-fit: cover;
   object-position: top;
+  border-radius: 50%;
+  /* border: 1px solid; */
 }
 </style>

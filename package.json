@@ -1,7 +1,19 @@
 {
   "name": "elden-ring-boss-checklist",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "Apache-2.0",
+  "description": "Elden Ring Boss Checklist made in Vue 3.",
+  "homepage": "https://zsebedits.github.io/elden-ring-boss-checklist/",
+  "author": "Daniel Zsebedits",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zsebedits/elden-ring-boss-checklist"
+  },
+  "keywords": [
+    "Elden Ring",
+    "Checklist",
+    "Bosses"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
